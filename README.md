@@ -1,95 +1,116 @@
-# Zora Starter App
 
-A minimal implementation showcasing Zora's SDK. This project demonstrates how to build a simple Zora client using Zora's SDKs, focusing on essential features for NFT minting, collecting, buying and selling.
+# ⚡ G9X πMEMORY DAPP  
+_Deploy soulbound memory NFTs on Zora L2 with Oracle-validated minting and IPFS metadata._
 
-Play with it live on [https://zora-starter-app-git-main.preview.ourzora.com](https://zora-starter-app-git-main.preview.ourzora.com)
+> Powered by GodStack ✦ Ra Mirror ✦ Scroll-Oracle Sync ✦ Zora Chain
 
-## Features
+---
 
-### Creator Client
+## 🌐 Live dApp
 
-- Create ERC1155 tokens ([Timed editions](https://docs.zora.co/contracts/ZoraTimedSaleStrategy))
-- IPFS file uploading for NFT media
-- Metadata form for token details
+→ [https://g9x-chain.vercel.app](https://g9x-chain.vercel.app)  
+→ Network: `Zora L2` (Chain ID: `7777777`)  
+→ Explorer: [Zora Explorer](https://explorer.zora.energy)
 
-### Collector Client
+---
 
-- Mint tokens
-- Buy tokens on secondary market
-- Sell tokens on secondary market
+## 💾 Features
 
-## Getting Started
+- ✅ Soulbound NFT minting (`PiMemory.sol`)
+- ✅ Oracle protection (`GodOracle.sol`)
+- ✅ Upload image/audio to IPFS (via `nft.storage`)
+- ✅ Attach metadata: memoryType, scrollRef, fieldSig
+- ✅ Valid only at aligned Pi-Times (e.g. 3:14 AM, 6:18 PM)
+- ✅ Wallet connects to Zora L2
 
-1. Clone the repository:
+---
+
+## 🔧 Smart Contracts
+
+| Contract      | Role                                 |
+|---------------|--------------------------------------|
+| `PiMemory.sol` | Soulbound memory NFT minting         |
+| `GodOracle.sol`| Oracle validation for Pi-Time + logic|
+
+---
+
+## 🚀 Deploy Guide
+
+### 1. Clone & Install
 
 ```bash
-git clone https://github.com/ourzora/zora-starter-app.git
-```
-
-2. Install dependencies:
-
-```bash
+git clone https://github.com/G9X0/g9x-chain.git
+cd g9x-chain
 npm install
-# or
-yarn
-# or
-pnpm install
 ```
 
-3. Set up environment variables:
+---
+
+### 2. Set Up `.env`
 
 ```env
-# Create a .env.local file with:
-NEXT_PUBLIC_PRIVY_APP_ID=your_project_id
-PINATA_API_KEY=your_pinata_api_key
-PINATA_SECRET_KEY=your_pinata_secret_key
+PRIVATE_KEY=your-wallet-private-key
+NEXT_PUBLIC_CONTRACT_ADDRESS=your-deployed-pimemory-address
+NEXT_PUBLIC_CHAIN_ID=7777777
+NEXT_PUBLIC_NFT_STORAGE_KEY=your-nft-storage-api-key
 ```
 
-4. Run the development server:
+---
+
+### 3. Deploy to Zora L2
+
+```bash
+npx hardhat run scripts/deploy-pimemory.js --network zora
+```
+
+💡 You must fund your wallet with Zora ETH:  
+→ [https://faucet.zora.energy](https://faucet.zora.energy)
+
+---
+
+### 4. Run Local Frontend
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open: `http://localhost:3000`
 
-## Usage
+---
 
-### Creating NFTs
+### 5. Push to Vercel
 
-1. Connect your wallet using the Login button in the header
-2. Navigate to the Create page
-3. Upload supported media (JPEG, PNG, GIF, WEBP)
-4. Fill in token details (title, description)
-5. Click "Create" to mint your NFT
-6. View transaction status and access block explorer links
+Go to [https://vercel.com/import/git](https://vercel.com/import/git), connect your repo, and paste your `.env` values.
 
-### Collecting NFTs
+---
 
-1. Connect your wallet
-2. Navigate to the Collect page
-3. View available NFTs for primary sale or secondary market
-4. Click "Mint" to collect from primary sale
-5. Click "Buy" to purchase from secondary market
-6. Click "Sell" to list your NFTs on the secondary market
+## 📁 Structure
 
-## Contributing
+```
+├── contracts/           # PiMemory + GodOracle
+├── scripts/             # Deploy scripts
+├── app/components/      # Mint UI
+├── app/utils/           # IPFS uploader
+├── abis/                # Contract ABI
+├── .env.example         # Sample environment
+└── hardhat.config.js    # Zora/Hardhat setup
+```
 
-This is a starter template for building with Zora's SDKs. Feel free to fork and modify for your own projects. If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+---
 
-## Learn More
+## 📡 GodStack Sync
 
-- [Zora Documentation](https://docs.zora.co/)
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Privy Documentation](https://docs.privy.io/)
-- [Pinata Documentation](https://docs.pinata.cloud/quickstart)
+Each NFT minted records a:
+- Pi-Time aligned mint
+- Scroll reference ID (e.g. `SCROLL_66`)
+- Field Signature (e.g. `Ω.0.0.∞.SCROLL_66`)
+- Memory Type (e.g. `Voicefield`, `DreamPrint`)
 
-## Deploy on Vercel
+This ensures tamper-proof memory registration via **G9X–Quantum Engine**.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new).
+---
 
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧬 Credits
+
+Developed by: [@JahTheArchitect](https://twitter.com/JahTheArchitect)  
+Engineered with ✦ GodStack ✦ DeepSeek ✦ π
